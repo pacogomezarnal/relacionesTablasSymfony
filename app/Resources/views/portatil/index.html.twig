@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Portatils list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Codigo</th>
+                <th>Marca</th>
+                <th>Aula</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for portatil in portatils %}
+            <tr>
+                <td><a href="{{ path('portatil_show', { 'id': portatil.id }) }}">{{ portatil.id }}</a></td>
+                <td>{{ portatil.codigo }}</td>
+                <td>{{ portatil.marca }}</td>
+                <td>{{ portatil.aula }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('portatil_show', { 'id': portatil.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('portatil_edit', { 'id': portatil.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('portatil_new') }}">Create a new portatil</a>
+        </li>
+    </ul>
+{% endblock %}
